@@ -1,0 +1,14 @@
+.signin-form {
+    margin-top: 50%;
+}
+
+.forgot-link{
+    font-size: 1.4rem;
+    font-style: italic;
+    color: rgb(70, 70, 70);
+    text-decoration: none;
+}
+
+.forgot-link:hover {
+    text-decoration: underline;
+}
