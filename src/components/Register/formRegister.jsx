@@ -1,3 +1,4 @@
+/* eslint-disable react/no-direct-mutation-state */
 import React, { Component } from 'react';
 import { auth } from '../Database/Firebase';
 import {  createUserWithEmailAndPassword } from "firebase/auth";
@@ -18,7 +19,7 @@ class FormRegister extends Component {
     .then((userCredential) => {
         var user = userCredential.user;
         console.log("User created successfully");
-
+        window.location.reload();
         
 
     })
@@ -29,16 +30,16 @@ class FormRegister extends Component {
   render() { 
     return ( 
       <div className="form-box">
-        <form action="" onSubmit={this.newSignUp} className="register-form form">
+        <div className="register-form form">
           <h3>Create account</h3>
           <input type="text" id="fname" placeholder="First name" onChange={(event)=>{this.state.name=event.currentTarget.value;}}/>
           <input type="text" id="lname" placeholder="Last name"  onChange={(event)=>{this.state.lastname=event.currentTarget.value;}}/>
           <input type="email" id="email1" placeholder ="Email"  onChange={(event)=>{this.state.emailId=event.currentTarget.value;}}/>
           <input type="password" id="pwd1" placeholder="Password" onChange={(event)=>{this.state.password=event.currentTarget.value;}}/>
     
-          <input type="submit" value="Register" />
+          <button className="login__button" onClick={this.newSignUp} >Sign up</button>
 
-        </form>
+        </div>
       </div>
      );
   }

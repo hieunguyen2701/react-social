@@ -1,21 +1,13 @@
 import './App.css';
-import {BrowserRouter as Router, Switch, Route} from "react-router-dom"
-import Login from './components/Login/Login';
-import Register from './components/Register/Register';
-
+import WelcomePage from "./components/WelcomePage/WelcomePage"
+import MainPage from "./components/MainPage/MainPage"
 function App() {
   return (
     <div className="App">
-        <Router>
-          <Switch>
-            <Route path="/" exact>
-              <Login/>
-            </Route>
-            <Route path="/Register" >
-              <Register/>
-            </Route>
-          </Switch>
-        </Router>
+      {/* <WelcomePage/> */}
+      {
+        (localStorage.getItem("users")===undefined ||  localStorage.getItem("users")== null)?<WelcomePage/> : <MainPage/>
+      }
     </div>
   );
 }
