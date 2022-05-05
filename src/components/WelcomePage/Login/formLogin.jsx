@@ -1,7 +1,7 @@
 /* eslint-disable react/no-direct-mutation-state */
 import React, { Component } from 'react';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from '../Database/Firebase';
+import { auth } from '../../Database/Firebase';
 class FormLogin extends Component {
   constructor(props) {
     super(props);

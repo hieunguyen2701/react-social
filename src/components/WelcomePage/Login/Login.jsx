@@ -1,5 +1,4 @@
 import React from 'react'
-import '../../App.css'
 import './Login.css'
 import FormLogin from './formLogin'
 import {Link} from "react-router-dom"

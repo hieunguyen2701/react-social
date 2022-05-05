@@ -1,11 +1,12 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
-import Login from "../Login/Login"
-import Register from "../Register/Register"
+import Login from "./Login/Login"
+import Register from "./Register/Register"
 import "./WelcomePage.css"
 
 function WellcomePage() {
-    return (
-      <div className="App">
+  return (
+      <div className="wellcome">
+      <div className="WellcomePage">
           <Router>
             <Switch>
               <Route path="/" exact>
@@ -16,6 +17,7 @@ function WellcomePage() {
               </Route>
             </Switch>
           </Router>
+      </div>
       </div>
     );
   }

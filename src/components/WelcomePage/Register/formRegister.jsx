@@ -1,6 +1,6 @@
 /* eslint-disable react/no-direct-mutation-state */
 import React, { Component } from 'react';
-import { auth } from '../Database/Firebase';
+import { auth } from '../../Database/Firebase';
 import {  createUserWithEmailAndPassword } from "firebase/auth";
 class FormRegister extends Component {
   constructor(props) {
@@ -20,6 +20,19 @@ class FormRegister extends Component {
         var user = userCredential.user;
         console.log("User created successfully");
         window.location.reload();
+        let payload = {
+          "id": user.uid,
+          "username": this.state.emailId,
+          "password" : this.state.password
+        }
+        const requestOption = {
+            method: "POST",
+            headers: { 'Content-Type': 'application/json' },
+            body : JSON.stringify(payload),
+        }
+      fetch("http://localhost:8080/user/add", requestOption)
+        .then()
+          
         
 
     })

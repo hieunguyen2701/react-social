@@ -1,32 +1,5 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: inherit;
-}
-
 :root {
-  --primary-color: #03a9f4;
-  --text-color: #333;
-}
-
-html {
-  box-sizing: border-box;
-  color: var(--text-color);
-  font-size: 62.5%;
-  font-family: 'Roboto', sans-serif;
-  line-height: 1.6;
-}
-
-body {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-#root {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  background: var(--primary-color);
-  transition: 0.5s;
-}
+    --border-radius: 3px;
+    --primary-color: rgb(0, 120, 210);
+    --light-grey: rgb(245, 245, 245);
+  }

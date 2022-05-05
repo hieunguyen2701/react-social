@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import NavBar from '../NavBar/NavBar'
+import Content from '../Content/Content'
+import "./MainPage.css"
 class MainPage extends Component {
     constructor(props) {
         super(props);
@@ -7,7 +10,8 @@ class MainPage extends Component {
     render() { 
         return ( 
             <div>
-                <h1>Main Page</h1>
+                <NavBar />
+                <Content/>
             </div>
          );
     }

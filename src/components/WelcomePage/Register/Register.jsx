@@ -1,6 +1,5 @@
 import React from 'react'
 import './Register.css'
-import '../../App.css'
 import FormRegister from './formRegister'
 import {Link} from "react-router-dom"
 
