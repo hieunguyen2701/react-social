@@ -12,12 +12,12 @@ Thêm chức năng log out ....
 
 ## Sơ đồ cấu trúc UI :
 
-WelcomePage:`WelcomePage.js`
+WelcomePage:(WelcomePage.js)
     Login:
         Login.jsx
     Register:
         Register.jsx
-MainPage:`MainPage.js`
+MainPage:(MainPage.js)
     Navbar:
         Logo:
             Logo.js
