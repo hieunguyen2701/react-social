@@ -9,7 +9,7 @@ class Action extends Component {
             userEmail : "hello name"
         }
     }
-   
+
     logOut = () => {
         localStorage.removeItem("users")
         window.location.reload();
@@ -18,16 +18,21 @@ class Action extends Component {
         console.log(this.userEmail)
     }
     render() { 
+        const user = JSON.parse(localStorage.getItem("users"))
+        var userGmail = user.email
         return ( 
             <div>
                 <div className="actions">   
                     <button onClick={this.logOut} className="button primary-button">LogOut</button>
+                    <span className="hello">Hello</span>
+                    <span className = "userGmail">{userGmail}</span>
                     <div className="profile">
                         <PersonIcon className="hoverable" />
                         <ArrowDropDownIcon className="hoverable" />
                     </div>
                 </div>
             </div>
+           
          );
     }
 }
