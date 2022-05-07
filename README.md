@@ -19,6 +19,7 @@ WelcomePage:(WelcomePage.js)
 
     Register:
         Register.jsx
+        
 MainPage:(MainPage.js)
 
     Navbar:
