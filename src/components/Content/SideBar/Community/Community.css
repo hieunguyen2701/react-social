@@ -50,6 +50,7 @@
 
 .community-section .action-buttons>.primary-button {
     margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .community-section .action-buttons .secondary-buttons {
@@ -57,4 +58,15 @@
     flex-wrap: wrap;
     justify-content: space-between;
     margin: 15px 0px;
+}
+.btn-up-post{
+    text-decoration: none;
+    background: #03a9f4;
+    color: white;
+    padding: 10px 124px;
+    font-size: 12px;
+    font-weight: bold;
+    border: 1px solid var(--primary-color);
+    margin-top: 15px;
+
 }

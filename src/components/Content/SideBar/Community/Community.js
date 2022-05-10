@@ -1,5 +1,5 @@
 import React from "react";
-
+import {Link} from "react-router-dom"
 import "./Community.css";
 import ArrowDropUp from "@material-ui/icons/ArrowDropUp";
 import Button from "./button/Button.tsx";
@@ -23,6 +23,7 @@ export default function Community() {
       </div>
       <div className="action-buttons">
         <Button primary label="VIEW ALL" />
+        <Link to="/submitPost" className="btn-up-post">upPost</Link>
         <div className="secondary-buttons">
           <Button tertiary label="Sports" />
           <Button tertiary label="News" />

@@ -6,10 +6,11 @@ class Action extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            userEmail : "hello name"
+            userEmail: "hello name",
+            username : localStorage.getItem("username")
         }
     }
-
+   
     logOut = () => {
         localStorage.removeItem("users")
         window.location.reload();
@@ -25,7 +26,7 @@ class Action extends Component {
                 <div className="actions">   
                     <button onClick={this.logOut} className="button primary-button">LogOut</button>
                     <span className="hello">Hello</span>
-                    <span className = "userGmail">{userGmail}</span>
+                    <span className = "username">{this.state.username}</span>
                     <div className="profile">
                         <PersonIcon className="hoverable" />
                         <ArrowDropDownIcon className="hoverable" />

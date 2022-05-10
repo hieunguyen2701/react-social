@@ -141,10 +141,12 @@
   align-items: center;
   margin: 0px 5px;
   padding: 3px;
+  text-decoration: none;
 }
 
 .posts-wrapper .post .post-footer .footer-action:first-child {
   margin-left: 0px;
+  color : #828282
 }
 
 .posts-wrapper .post .post-footer .footer-action:last-child {

@@ -7965,7 +7965,7 @@
     "strip-ansi" "^6.0.1"
     "text-table" "^0.2.0"
 
-"react-dom@^16.8.0 || ^17.0.0", "react-dom@^18.0.0", "react-dom@^18.1.0", "react-dom@>=16.6.0":
+"react-dom@^16.8.0 || ^17.0.0", "react-dom@^18.0.0", "react-dom@^18.1.0", "react-dom@>=16.6.0", "react-dom@>=16.8.0":
   "integrity" "sha512-fU1Txz7Budmvamp7bshe4Zi32d0ll7ect+ccxNu9FlObT605GOEB8BfO4tmRJ39R5Zj831VCpvQ05QPBW5yb+w=="
   "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-18.1.0.tgz"
   "version" "18.1.0"
@@ -8102,7 +8102,7 @@
     "loose-envify" "^1.4.0"
     "prop-types" "^15.6.2"
 
-"react@^0.14.0 || ^15.0.0 || ^16.0.0 || ^17.0.0", "react@^16.8.0 || ^17.0.0", "react@^18.0.0", "react@^18.1.0", "react@>= 16", "react@>=15", "react@>=16.6.0":
+"react@^0.14.0 || ^15.0.0 || ^16.0.0 || ^17.0.0", "react@^16.8.0 || ^17.0.0", "react@^18.0.0", "react@^18.1.0", "react@>= 16", "react@>=15", "react@>=16.6.0", "react@>=16.8.0":
   "integrity" "sha512-4oL8ivCz5ZEPyclFQXaNksK3adutVS8l2xzZU0cqEFrE9Sb7fC0EFK5uEk74wIreL1DERyjvsU915j1pcT2uEQ=="
   "resolved" "https://registry.npmjs.org/react/-/react-18.1.0.tgz"
   "version" "18.1.0"
@@ -9295,6 +9295,11 @@
   "version" "4.4.1"
   dependencies:
     "punycode" "^2.1.0"
+
+"use-state-with-callback@^3.0.2":
+  "integrity" "sha512-gs6t5ilsbi2UvoYXdw8+dwQg6yT3QfO/sYhm5Wa3tfwcL6BSad85FiET8ZtTWid4gjul1T1TJ8ReV4Wk1B7UZg=="
+  "resolved" "https://registry.npmjs.org/use-state-with-callback/-/use-state-with-callback-3.0.2.tgz"
+  "version" "3.0.2"
 
 "util-deprecate@^1.0.1", "util-deprecate@^1.0.2", "util-deprecate@~1.0.1":
   "integrity" "sha1-RQ1Nyfpw3nMnYvvS1KKJgUGaDM8="

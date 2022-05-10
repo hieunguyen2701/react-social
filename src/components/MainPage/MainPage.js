@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import NavBar from '../NavBar/NavBar'
 import Content from '../Content/Content'
 import SubmitPost from '../SubmitPost/SubmitPost'
+import CommentPost from '../commentPost/commentPost'
 import "./MainPage.css"
 class MainPage extends Component {
     constructor(props) {
@@ -18,8 +19,11 @@ class MainPage extends Component {
                             <NavBar />
                             <Content/>
                         </Route>
-                        <Route path="/submitPost">
+                        <Route path="/submitPost" >
                             <SubmitPost/>
+                        </Route>
+                        <Route path="/comment" >
+                            <CommentPost />
                         </Route>
                     </Switch>
                 </Router>

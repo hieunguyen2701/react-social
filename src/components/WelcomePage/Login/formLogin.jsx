@@ -33,7 +33,7 @@ class FormLogin extends Component {
       <div className="form-box">
         <div   className="signin-form form">
           <h3>Login</h3>
-          <input type="text" placeholder="Username" id='usename1'   onChange={(event)=>{this.state.emailId=event.currentTarget.value}}/>
+          <input type="text" placeholder="Email" id='usename1'   onChange={(event)=>{this.state.emailId=event.currentTarget.value}}/>
           <input type="password" placeholder="Password" id='pwd1'   onChange={(event)=>{this.state.password=event.currentTarget.value}}/>
         
           <button className="login__button" onClick={this.login}>Log In</button>

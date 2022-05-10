@@ -1,5 +1,5 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React, { Component } from 'react';
-
 
 import "./Posts.css";
 import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
@@ -8,54 +8,120 @@ import ModeCommentIcon from "@material-ui/icons/ModeComment";
 import ShareIcon from "@material-ui/icons/Share";
 import BookmarkIcon from "@material-ui/icons/Bookmark";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
-
-import posts from "../../../Data/Post/posts.json";
+import { Redirect , Link} from 'react-router-dom';
+import * as constantClass from "../../Constant/Constant"
 
 class Post extends Component {
   // eslint-disable-next-line no-useless-constructor
   constructor(props) {
     super(props);
+    this.state = {
+      upvotesPost: this.props.upvotes,
+      color: null,
+      isClick: false,
+
+    }
   }
-  state = {  }
+  updatePost = (upvote) => {
+   
+    
+
+        let payload = {
+          "id": this.props.id,
+          "idUser" : JSON.parse(localStorage.getItem("users")).uid,
+          "title": this.props.title,
+          "text": this.props.text,
+          "image_src": this.props.image_src,
+          "upvotes": upvote,
+          "comments": this.props.comments,
+          "community": this.props.community,
+          "username" : localStorage.getItem("username")
+      }
+      const requestOption = {
+          method: "PUT",
+          headers: { 'Content-Type': 'application/json' },
+          body : JSON.stringify(payload),
+      }
+      fetch(constantClass.urlLink+"/post/update", requestOption)
+          .then(res => res.json())
+          .then(data => {
+          console.log(data)
+          })
+          .catch(error => {
+            console.log(error)
+      })
+    
+  }
+  handleClick = () => {
+    
+  }
+  upvote = (e) => {
+    e.stopPropagation();
+    if (!this.state.isClick) {      
+      this.setState({
+        upvotesPost: this.props.upvotes + 1,
+        color: "red",
+        isClick: true,    
+      })
+      this.updatePost(this.props.upvotes+1)
+    }
+    else {
+      this.setState({
+        upvotesPost: this.props.upvotes,
+        color: null,
+        isClick: false,
+ 
+      })
+      this.updatePost(this.props.upvotes)
+    }
+ 
+    console.log("upvote is " + this.props.upvotes)
+  }
+ 
+ 
   render() { 
     return ( 
-      <div>               
+    
+      <div className="post-container" onClick={this.handleClick}>  
+            
             <div className="post">
-              <div className="post-sidebar">
-                <ArrowUpwardIcon className="upvote" />
-                <span>{this.props.upvotes}</span>
+              <div className="post-sidebar" >
+              <ArrowUpwardIcon className="upvote"
+                style={{ color:this.state.color }} onClick={this.upvote}/>
+                <span>{this.state.upvotesPost}</span>
                 <ArrowDownwardIcon className="downvote" />
               </div>
-              <div className="post-title">
-                <img src={this.props.subreddit_image_src} />
-                <span className="subreddit-name">r/{this.props.subreddit_name}</span>
-                <span className="post-user">Posted by</span>
-                <span className="post-user underline">u/{this.props.username}</span>
-                <div className="spacer"></div>
-                {/* <Button label="+ JOIN" /> */}
-              </div>
-              <div className="post-body">
-                <span className="title">{this.props.title}</span>
-                {/* {post.video_src && <Video src={post.video_src} duration={post.duration} />} */}
-                {this.props.image_src && <img src={this.props.image_src} />}
-                {this.props.description && <span className="description">{this.props.description}</span>}
-              </div>
-              <div className="post-footer">
-                <div className="comments footer-action">
-                  <ModeCommentIcon className="comment-icon" />
-                  <span>{this.props.comments} Comments</span>
+      
+                <div className="post-title">
+                  <img src={this.props.subreddit_image_src} />
+                  <span className="subreddit-name">r/{this.props.community}</span>
+                  <span className="post-user">Posted by</span>
+                  <span className="post-user underline">u/{this.props.username}</span>
+                  <div className="spacer"></div>
                 </div>
-                <div className="share footer-action">
-                  <ShareIcon />
-                  <span>Share</span>
+                <div className="post-body">
+                    <span className="title">{this.props.title}</span>
+                  {/* {post.video_src && <Video src={post.video_src} duration={post.duration} />} */}
+                  {this.props.text && <span className="description">{this.props.text}</span>}
+                  {this.props.image_src && <img src={this.props.image_src} />}
                 </div>
-                <div className="save footer-action">
-                  <BookmarkIcon />
-                  <span>Save</span>
-                </div>
-                <MoreHorizIcon className="more-icon footer-action" />
+                  <div className="post-footer">
+                  <Link to="/comment" className="comments footer-action">                    
+                    <ModeCommentIcon className="comment-icon" />
+                    <span>{this.props.comments} Comments</span>
+                  </Link>
+                  
+                  <div className="share footer-action">
+                    <ShareIcon />
+                    <span>Share</span>
+                  </div>
+                  <div className="save footer-action">
+                    <BookmarkIcon />
+                    <span>Save</span>
+                  </div>
+                  <MoreHorizIcon className="more-icon footer-action" />
               </div>
-            </div>
+          </div>
       </div>
      );
   }

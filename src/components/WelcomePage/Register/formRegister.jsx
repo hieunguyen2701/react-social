@@ -1,16 +1,17 @@
 /* eslint-disable react/no-direct-mutation-state */
 import React, { Component } from 'react';
 import { auth } from '../../Database/Firebase';
-import {  createUserWithEmailAndPassword } from "firebase/auth";
+import { Redirect } from 'react-router-dom';
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import * as constantClass from "../../Constant/Constant"
 class FormRegister extends Component {
   constructor(props) {
     super(props);
     this.state = {
       emailId: null,
-      firstname:null,
-      lastname: null,
       username: null,
-      password : null
+      password: null,
+      redirect: false,
   }
   }
   
@@ -19,10 +20,12 @@ class FormRegister extends Component {
     .then((userCredential) => {
         var user = userCredential.user;
         console.log("User created successfully");
-        window.location.reload();
+        alert("User created successfully")
+        localStorage.setItem("username",this.state.username)
         let payload = {
           "id": user.uid,
-          "username": this.state.emailId,
+          "username": this.state.username,
+          "email": this.state.emailId,
           "password" : this.state.password
         }
         const requestOption = {
@@ -30,25 +33,33 @@ class FormRegister extends Component {
             headers: { 'Content-Type': 'application/json' },
             body : JSON.stringify(payload),
         }
-      fetch("http://localhost:8080/user/add", requestOption)
-        .then()
-          
-        
-
+        fetch(constantClass.urlLink+"/user/add", requestOption)
+        .then()  
+        this.setState({
+          redirect : true
+        })
+      
     })
     .catch((err) => {
        
-})
+    })
+    
+  }
+  renderRedirect = () => {
+    if (this.state.redirect) {
+      return <Redirect to='/' />
+    }
   }
   render() { 
-    return ( 
+    
+    return (   
       <div className="form-box">
+        {this.renderRedirect()}
         <div className="register-form form">
           <h3>Create account</h3>
-          <input type="text" id="fname" placeholder="First name" onChange={(event)=>{this.state.name=event.currentTarget.value;}}/>
-          <input type="text" id="lname" placeholder="Last name"  onChange={(event)=>{this.state.lastname=event.currentTarget.value;}}/>
-          <input type="email" id="email1" placeholder ="Email"  onChange={(event)=>{this.state.emailId=event.currentTarget.value;}}/>
-          <input type="password" id="pwd1" placeholder="Password" onChange={(event)=>{this.state.password=event.currentTarget.value;}}/>
+          <input type="text" id="lname" placeholder="Username"  onChange={(event)=>{this.state.username=event.currentTarget.value;}} required/>
+          <input type="email" id="email1" placeholder ="Email"  onChange={(event)=>{this.state.emailId=event.currentTarget.value;}} required/>
+          <input type="password" id="pwd1" placeholder="Password" onChange={(event)=>{this.state.password=event.currentTarget.value;}} required/>
     
           <button className="login__button" onClick={this.newSignUp} >Sign up</button>
 

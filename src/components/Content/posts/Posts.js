@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import posts from "../../../Data/Post/posts.json";
 import Post from "./Post"
+import * as constantClass from "../../Constant/Constant"
 class Posts extends Component {
     constructor(props) {
         super(props);
@@ -10,7 +11,7 @@ class Posts extends Component {
         }
     }
     componentDidMount() {
-        fetch('http://localhost:8080/post/getAll')
+        fetch(constantClass.urlLink+"/post/getAll")
             .then(res => res.json())
             .then(data => {
                 this.setState({
@@ -22,6 +23,7 @@ class Posts extends Component {
     getPost = () => {
         this.setState({postArray:posts})
     }
+   
     render() { 
         const { dataIsLoad, postArray } = this.state
         
@@ -31,13 +33,21 @@ class Posts extends Component {
         }
         const Display = postArray.map(item => {
             return (
-                <Post upvotes={item.upvotes} subreddit_name={item.subreddit_name} subreddit_image_src={item.subreddit_image_src} username={item.username}
-                    title={item.title} comments={item.comments} description={item.description}
-                    image_src={item.image_src} />
+                <Post
+                    id={item.id}
+                    upvotes={item.upvotes}
+                    subreddit_image_src={null}
+                    community={item.community}
+                    username={item.username}
+                    title={item.title}
+                    text={item.text}
+                    image_src={item.image_src}
+                    comments={item.comments}
+                />
                 )
         })
         return ( 
-            <div className="posts-wrapper">
+            <div className="posts-wrapper" >
                 { Display}
             </div>
          );
