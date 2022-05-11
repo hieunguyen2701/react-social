@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import * as constantClass from "../../Constant/Constant"
 import TrendingToday from "./Trending"
 import "./Trending.css"
-import Test from "./Test"
+
 class TrendingPost extends Component {
     constructor(props) {
         super(props);

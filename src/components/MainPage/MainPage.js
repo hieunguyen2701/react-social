@@ -22,7 +22,7 @@ class MainPage extends Component {
                         <Route path="/submitPost" >
                             <SubmitPost/>
                         </Route>
-                        <Route path="/comment" >
+                        <Route path="/post/get" >
                             <CommentPost />
                         </Route>
                     </Switch>

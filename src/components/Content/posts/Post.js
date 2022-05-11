@@ -53,7 +53,7 @@ class Post extends Component {
     
   }
   handleClick = () => {
-    
+
   }
   upvote = (e) => {
     e.stopPropagation();
@@ -106,7 +106,8 @@ class Post extends Component {
                   {this.props.image_src && <img src={this.props.image_src} />}
                 </div>
                   <div className="post-footer">
-                  <Link to="/comment" className="comments footer-action">                    
+                  <Link to="/post/get" state={this.props.id}
+                      className="comments footer-action">                    
                     <ModeCommentIcon className="comment-icon" />
                     <span>{this.props.comments} Comments</span>
                   </Link>
