@@ -20,10 +20,7 @@ class Posts extends Component {
                 })
             })
     }
-    getPost = () => {
-        this.setState({postArray:posts})
-    }
-   
+    
     render() { 
         const { dataIsLoad, postArray } = this.state
         
