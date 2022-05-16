@@ -4,11 +4,17 @@ import NavBar from '../NavBar/NavBar'
 import Content from '../Content/Content'
 import SubmitPost from '../SubmitPost/SubmitPost'
 import CommentPost from '../commentPost/commentPost'
+import * as constantClass from "../Constant/Constant"
 import "./MainPage.css"
 class MainPage extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            username: null
+            
+        }
     }
+    
     state = {  }
     render() { 
         return ( 
@@ -22,7 +28,8 @@ class MainPage extends Component {
                         <Route path="/submitPost" >
                             <SubmitPost/>
                         </Route>
-                        <Route path="/post/get" >
+                        <Route path="/commentPost" >
+                            <NavBar />
                             <CommentPost />
                         </Route>
                     </Switch>

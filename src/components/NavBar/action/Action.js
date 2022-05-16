@@ -2,25 +2,33 @@ import React, { Component } from 'react';
 import "./Action.css";
 import PersonIcon from "@material-ui/icons/Person";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
+import * as constantClass from "../../Constant/Constant"
 class Action extends Component {
     constructor(props) {
         super(props);
         this.state = {
             userEmail: "hello name",
-            username : localStorage.getItem("username")
+            username :  null
         }
     }
-   
+    componentDidMount() {
+        const user = JSON.parse(localStorage.getItem("users"))
+    
+        fetch(constantClass.localhost+"/user/find?id="+user.uid)
+        .then(res => res.json())
+        .then(data => {
+            localStorage.setItem("username", data.username)
+            this.setState({         
+                username : data.username
+            })
+        })
+   }
     logOut = () => {
-        localStorage.removeItem("users")
+
+        localStorage.clear()
         window.location.reload();
     }
-    log = () => {
-        console.log(this.userEmail)
-    }
     render() { 
-        const user = JSON.parse(localStorage.getItem("users"))
-        var userGmail = user.email
         return ( 
             <div>
                 <div className="actions">   

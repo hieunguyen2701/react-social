@@ -35,7 +35,7 @@ class SubmitPost extends Component {
             headers: { 'Content-Type': 'application/json' },
             body : JSON.stringify(payload),
         }
-        fetch(constantClass.urlLink+"/post/add", requestOption)
+        fetch(constantClass.localhost+"/post/add", requestOption)
             .then(res => res.json())
             .then(data => {
             console.log(data)

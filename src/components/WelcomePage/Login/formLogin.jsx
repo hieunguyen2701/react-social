@@ -2,12 +2,14 @@
 import React, { Component } from 'react';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../../Database/Firebase';
+import * as constantClass from "../../Constant/Constant"
 class FormLogin extends Component {
   constructor(props) {
     super(props);
     this.state = { 
       emailId : null,
-      password: null
+      password: null,
+      username : null
    }
   }
 
@@ -17,15 +19,15 @@ class FormLogin extends Component {
         .then((userCredential) => {
             // Signed in 
             const user = userCredential.user;
-            var id = user.uid;
-            console.log(id)
-            console.log("login succses")
-            localStorage.setItem("users",JSON.stringify(user));
+           
+            alert("login succses")
+            localStorage.setItem("users", JSON.stringify(user));
+         
             window.location.reload();
             // ...
         })
         .catch((error) => {
-         
+          alert(error.message)
         });
 }
   render() { 

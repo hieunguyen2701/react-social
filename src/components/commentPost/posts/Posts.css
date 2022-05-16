@@ -11,14 +11,15 @@
   grid-template-areas:
     "post-sidebar post-title"
     "post-sidebar post-body"
-    "post-sidebar post-footer";
+    "post-sidebar post-footer"
+    "post-comment post-comment";
 
   background-color: white;
 }
 
 .posts-wrapper .post:hover {
   cursor: pointer;
-  border : 1px solid black;
+  border : 1px solid white;
 }
 
 .posts-wrapper .post .post-sidebar {
@@ -170,4 +171,23 @@
 .posts-wrapper .post .post-footer .footer-action:hover {
   border-radius: 5px;
   background-color: rgb(230, 230, 230);
+}
+.posts-wrapper .post .post-comment{
+  grid-area: post-comment;
+  margin-top: 10px;
+}
+.posts-wrapper .post .post-comment input {
+  width : 100%;
+  height : 150px;
+  font-size : 15px;
+  padding: 10px 10px 120px 10px;
+}
+.posts-wrapper .post .post-comment button {
+  margin-right: 0px;
+  font-size: 12px;
+  width: 135px;
+  padding: 5px;
+}
+.posts-wrapper .post .post-comment span {
+  margin-top: 10px;
 }

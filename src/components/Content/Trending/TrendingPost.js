@@ -12,7 +12,7 @@ class TrendingPost extends Component {
         }
     }
     componentDidMount() {
-        fetch(constantClass.urlLink+"/post/getAll")
+        fetch(constantClass.localhost+"/post/getAll")
             .then(res => res.json())
             .then(data => {
                 this.setState({

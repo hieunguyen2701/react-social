@@ -21,7 +21,6 @@ class FormRegister extends Component {
         var user = userCredential.user;
         console.log("User created successfully");
         alert("User created successfully")
-        localStorage.setItem("username",this.state.username)
         let payload = {
           "id": user.uid,
           "username": this.state.username,
@@ -41,7 +40,7 @@ class FormRegister extends Component {
       
     })
     .catch((err) => {
-       
+       alert(err.message)
     })
     
   }
