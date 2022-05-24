@@ -185,7 +185,7 @@
   width : 100%;
   height : 100px;
   font-size : 15px;
-  padding: 10px 10px 120px 10px;
+  padding: 12px 10px 80px 10px;
 }
 .posts-wrapper .posts .post-comment button {
   margin-right: 0px;
@@ -195,6 +195,7 @@
 }
 .posts-wrapper .posts .post-comment span {
   margin-top: 10px;
+  color: var(--primary-color);
 }
 .comment-input {
   display: flex;
@@ -202,4 +203,5 @@
 .post-comment-image{
   height : 40px;
   width : 40px ;
+  margin-right: 12px;
 }
