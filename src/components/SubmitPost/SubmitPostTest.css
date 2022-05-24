@@ -236,6 +236,9 @@ textarea, input {
 
 
 /* css button submit */
+.form-submit-btn {
+    text-decoration: none;
+}
 
 .form-submit-btn button {
     padding: 6px 16px;
