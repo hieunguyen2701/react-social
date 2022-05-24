@@ -23,9 +23,6 @@ class Post extends Component {
     }
   }
   updatePost = (upvote) => {
-   
-    
-
         let payload = {
           "id": this.props.id,
           "idUser" : JSON.parse(localStorage.getItem("users")).uid,
@@ -86,6 +83,15 @@ class Post extends Component {
     }
     localStorage.setItem("post",JSON.stringify(post))
   }
+  componentDidMount () {
+     // delete post btn
+     let postDeleteBtn = document.querySelectorAll(".post-delete-btn");
+     let postDeleteConfirm = document.querySelectorAll(".post-delete-confirm");
+
+      postDeleteBtn.onClick  = () => {
+        postDeleteConfirm.classList.toggle("active")
+      }
+  }
   
   render() { 
     return ( 
@@ -112,6 +118,10 @@ class Post extends Component {
                   {/* {post.video_src && <Video src={post.video_src} duration={post.duration} />} */}
                   {this.props.text && <span className="description">{this.props.text}</span>}
                   {this.props.image_src && <img src={this.props.image_src} />}
+                  <div className='post-delete'>
+                    <span className="post-delete-btn">&times;</span>
+                    <div className='post-delete-confirm'>Delete this post?</div>
+                  </div>
                 </div>
                   <div className="post-footer">
             <Link to={{
