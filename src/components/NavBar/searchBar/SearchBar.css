@@ -26,5 +26,7 @@
   
   .searchbar label svg {
     color: rgb(130, 130, 130);
+    position: relative;
+    transform: translateY(-5px);
   }
   

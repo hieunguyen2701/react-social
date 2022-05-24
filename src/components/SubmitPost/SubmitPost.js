@@ -1,6 +1,9 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { Component } from 'react';
-import "./SubmitPost.css"
+
+import MyDropzone from "./Drop"
+import {useDropzone} from 'react-dropzone'
+// import "./SubmitPost.css"
 import {Link} from "react-router-dom"
 import uploadimage from '../../assets/image/statusadd.png'
 import { auth, storage } from '../Database/Firebase'
@@ -79,7 +82,7 @@ class SubmitPost extends Component {
             
         )
     }
-
+   
     render() { 
         return ( 
             <div>
@@ -91,6 +94,7 @@ class SubmitPost extends Component {
                     <img className="statusbar__upload" src={this.state.profileImag} width="55px" height="55px" />
                 </label>
                 <input placeholder="image_src" onChange={this.loadImg} type="file"></input>
+                <MyDropzone/>
                 <Link to="/">
                     <button onClick={this.submitPost}>Submit</button>
                 </Link>
