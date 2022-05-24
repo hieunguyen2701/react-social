@@ -112,6 +112,7 @@ class Post extends Component {
                   {/* {post.video_src && <Video src={post.video_src} duration={post.duration} />} */}
                   {this.props.text && <span className="description">{this.props.text}</span>}
                   {this.props.image_src && <img src={this.props.image_src} />}
+                  <div className='post-delete-btn'>&times;</div>
                 </div>
                   <div className="post-footer">
             <Link to={{
