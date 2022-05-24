@@ -30,7 +30,7 @@ class CommunityPost extends Component {
         }
          
         const Display = postArray.map(item => {
-            return (
+                return (
                     <Post
                         id={item.id}
                         upvotes={item.upvotes}

@@ -28,9 +28,21 @@ class CommunityPost extends Component {
             return <div>
             <h1> Pleses wait some time.... </h1> </div> 
         }
-         
-        const Display = postArray.map(item => {
-            return (
+        if (postArray.length == 0) {
+            useLayoutEffect(() => {
+              first
+            
+              return () => {
+                second
+              };
+            }, [third]) Display = () => {
+                
+                return <div>no post</div>
+            }
+        }
+        else {     
+            const Display = postArray.map(item => {
+                return (
                     <Post
                         id={item.id}
                         upvotes={item.upvotes}
@@ -44,7 +56,7 @@ class CommunityPost extends Component {
                     />
                     )
             })
-        
+        }
         return ( 
             <div>
                  <div className="content">

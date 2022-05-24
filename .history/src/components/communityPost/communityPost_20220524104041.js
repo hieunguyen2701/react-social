@@ -29,8 +29,8 @@ class CommunityPost extends Component {
             <h1> Pleses wait some time.... </h1> </div> 
         }
          
-        const Display = postArray.map(item => {
-            return (
+            const Display = postArray.map(item => {
+                return (
                     <Post
                         id={item.id}
                         upvotes={item.upvotes}
@@ -44,7 +44,7 @@ class CommunityPost extends Component {
                     />
                     )
             })
-        
+        }
         return ( 
             <div>
                  <div className="content">

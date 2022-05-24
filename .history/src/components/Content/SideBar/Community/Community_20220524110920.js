@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {Link} from "react-router-dom"
 import "./Community.css";
-import Button from "./button/Button.tsx";
+// import Button from "./button/Button.tsx";
 import * as constantClass from "../../../Constant/Constant"
 import CommunityPost from "./CommunityPost"
 class Community extends Component {

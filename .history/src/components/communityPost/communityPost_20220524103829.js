@@ -28,23 +28,22 @@ class CommunityPost extends Component {
             return <div>
             <h1> Pleses wait some time.... </h1> </div> 
         }
-         
+        
         const Display = postArray.map(item => {
             return (
-                    <Post
-                        id={item.id}
-                        upvotes={item.upvotes}
-                        subreddit_image_src={null}
-                        community={item.community}
-                        username={item.username}
-                        title={item.title}
-                        text={item.text}
-                        image_src={item.image_src}
-                        comments={item.comments}
-                    />
-                    )
-            })
-        
+                <Post
+                    id={item.id}
+                    upvotes={item.upvotes}
+                    subreddit_image_src={null}
+                    community={item.community}
+                    username={item.username}
+                    title={item.title}
+                    text={item.text}
+                    image_src={item.image_src}
+                    comments={item.comments}
+                />
+                )
+        })
         return ( 
             <div>
                  <div className="content">
