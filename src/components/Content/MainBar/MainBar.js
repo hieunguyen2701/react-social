@@ -7,6 +7,7 @@ import TrendingUp from "@material-ui/icons/TrendingUp";
 import Menu from "@material-ui/icons/Menu";
 import MoreHoriz from "@material-ui/icons/MoreHoriz";
 import ArrowDropDown from "@material-ui/icons/ArrowDropDown";
+import KhauTrang from "../../../assets/image/download.jfif";
 
 import "./MainBar.css";
 import Posts from "../posts/Posts";
@@ -25,7 +26,7 @@ export default function MainBar() {
             <br />
             <span className="description">Visit r/Coronavirus to talk about COVID-19, and visit www.who.int for more information.</span>
           </div>
-          <img src="./assets/images/pin.jpg" />
+          <img src= {KhauTrang} />
         </div>
       </div>
 
