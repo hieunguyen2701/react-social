@@ -84,16 +84,7 @@ class Post extends Component {
     localStorage.setItem("post",JSON.stringify(post))
   }
   deletePost = () => {
-    var deleteIcon = document.getElementById(this.props.userId)
-    var deleteButton = document.getElementById(`${this.props.userId}btn`)
-    deleteIcon.onclick = () => {
-      console.log(deleteButton)
-      deleteButton.classList.toggle("active")
-    }
-    deleteButton.onclick = () => {
-       console.log("delete")
-     } 
-  
+      var deleteIcon = document.querySelector("")
   }
   
   render() { 
@@ -122,8 +113,8 @@ class Post extends Component {
                   {this.props.text && <span className="description">{this.props.text}</span>}
                   {this.props.image_src && <img src={this.props.image_src} />}
                   <div className='post-delete'>
-                    <span className="post-delete-btn" id={this.props.userId}  onClick={this.deletePost}>&times;</span>
-                    <div className='post-delete-confirm ' id={`${this.props.userId}btn`}>Delete this post?</div>
+                    <span className="post-delete-btn"id={this.props.userId}  onClick={this.deletePost}>&times;</span>
+                    <div className='post-delete-confirm'>Delete this post?</div>
                   </div>
                 </div>
                   <div className="post-footer">

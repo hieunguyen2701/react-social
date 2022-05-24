@@ -85,14 +85,13 @@ class Post extends Component {
   }
   deletePost = () => {
     var deleteIcon = document.getElementById(this.props.userId)
-    var deleteButton = document.getElementById(`${this.props.userId}btn`)
+    var deleteButton = document.getElementById(`${this.props.user}`)
     deleteIcon.onclick = () => {
+     
       console.log(deleteButton)
       deleteButton.classList.toggle("active")
     }
-    deleteButton.onclick = () => {
-       console.log("delete")
-     } 
+      
   
   }
   

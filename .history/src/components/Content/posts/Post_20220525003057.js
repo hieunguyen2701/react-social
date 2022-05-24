@@ -85,14 +85,13 @@ class Post extends Component {
   }
   deletePost = () => {
     var deleteIcon = document.getElementById(this.props.userId)
-    var deleteButton = document.getElementById(`${this.props.userId}btn`)
+    var deleteButton = document.getElementById("post-delete-confirm-id")
     deleteIcon.onclick = () => {
+     
       console.log(deleteButton)
-      deleteButton.classList.toggle("active")
+      deleteButton.classList.to
     }
-    deleteButton.onclick = () => {
-       console.log("delete")
-     } 
+      
   
   }
   
@@ -123,7 +122,7 @@ class Post extends Component {
                   {this.props.image_src && <img src={this.props.image_src} />}
                   <div className='post-delete'>
                     <span className="post-delete-btn" id={this.props.userId}  onClick={this.deletePost}>&times;</span>
-                    <div className='post-delete-confirm ' id={`${this.props.userId}btn`}>Delete this post?</div>
+                    <div className='post-delete-confirm ' id="post-delete-confirm-id">Delete this post?</div>
                   </div>
                 </div>
                   <div className="post-footer">

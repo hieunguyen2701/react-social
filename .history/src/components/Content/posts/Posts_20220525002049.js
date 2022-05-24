@@ -32,7 +32,7 @@ class Posts extends Component {
             return (
                 <Post
                     id={item.id}
-                    userId = {item.idUser}
+                    userId = {item.user}
                     upvotes={item.upvotes}
                     subreddit_image_src={null}
                     community={item.community}

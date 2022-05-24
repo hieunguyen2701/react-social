@@ -90,9 +90,7 @@ class Post extends Component {
       console.log(deleteButton)
       deleteButton.classList.toggle("active")
     }
-    deleteButton.onclick = () => {
-       console.log("delete")
-     } 
+      
   
   }
   
