@@ -172,18 +172,39 @@
   background-color: rgb(230, 230, 230);
 }
 
+.post-delete {
+  position: relative;
+  top: calc(-100% + 12px);
+}
 .post-delete-btn {
   position: relative;
-  font-size: 2.0rem;
+  left: 95%;
   font-weight: 600;
-  top: calc(-100% + 12px);
-  right: calc(-100% + 40px);
-  padding: 4px;
-  width: 40px;
-  height: 40px;
-  text-align: center;
+  font-size: 2.0rem;
+  padding: 10px 8px;
+}
+.post-delete-btn:hover {
+  color: var(--primary-color);
 }
 
-.post-delete-btn:hover {
+.post-delete-confirm {
+  position: absolute;
+  right: 0;
+  font-size: 1.4rem;
+  font-weight: 600;
   color: red;
+  padding: 4px 6px;
+  background-color: #fff;
+  border: 2px solid var(--border-color);
+  border-radius: 5px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  display: none;
+}
+
+.post-delete-confirm:hover {
+  background-color: #d9d9d9;
+}
+
+.post-delete-confirm.active {
+  display: block;
 }
