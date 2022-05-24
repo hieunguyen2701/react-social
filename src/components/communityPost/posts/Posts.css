@@ -185,3 +185,18 @@
 .posts-wrapper .posts .post-comment span {
   margin-top: 10px;
 }
+
+.noDataTitle {
+  text-align: center;
+  width: 100%;
+}
+
+.noDataTitle h1 {
+  display: block;
+  width: fit-content;
+  margin: auto;
+}
+
+.noDataValue {
+  color: red;
+}

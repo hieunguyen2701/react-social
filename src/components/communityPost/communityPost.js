@@ -48,8 +48,8 @@ class CommunityPost extends Component {
             <h1> Pleses wait some time.... </h1> </div> 
         }
         if (noData) {
-            return <div>
-            <h1> no Data </h1> </div>
+            return <div className = 'noDataTitle'>
+            <h1> Your search <span className='noDataValue'>{localStorage.getItem("community")}</span> did not match any posts </h1> </div>
         }
          
         const Display = postArray.map(item => {
