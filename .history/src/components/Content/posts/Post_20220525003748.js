@@ -92,17 +92,8 @@ class Post extends Component {
       deleteButton.classList.toggle("active")
     }
     deleteButton.onclick = () => {
-      const currentUserId = JSON.parse(localStorage.getItem("users")).uid
-      if (currentUserId === this.props.userId) {
-        //delete Post
-        fetch(constantClass.localhost + "/post/deletePost?id=" + this.props.id, {
-            method: 'DELETE',
-        })
-          .then(data => data.json())
-          .then()
-
-      }
-    } 
+       console.log("delete")
+     } 
   
   }
   
@@ -133,7 +124,7 @@ class Post extends Component {
                   {this.props.image_src && <img src={this.props.image_src} />}
                   <div className='post-delete'>
                     <span className="post-delete-btn" id={this.props.userId}  onClick={this.deletePost}>&times;</span>
-                    <div className='post-delete-confirm ' id={`${this.props.userId}btn`}>Delete this post?</div>
+                    <div className='post-delete-confirm active' id={`${this.props.userId}btn`}>Delete this post?</div>
                   </div>
                 </div>
                   <div className="post-footer">

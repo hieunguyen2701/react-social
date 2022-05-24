@@ -96,7 +96,7 @@ class Post extends Component {
       if (currentUserId === this.props.userId) {
         //delete Post
         fetch(constantClass.localhost + "/post/deletePost?id=" + this.props.id, {
-            method: 'DELETE',
+          
         })
           .then(data => data.json())
           .then()

@@ -95,11 +95,9 @@ class Post extends Component {
       const currentUserId = JSON.parse(localStorage.getItem("users")).uid
       if (currentUserId === this.props.userId) {
         //delete Post
-        fetch(constantClass.localhost + "/post/deletePost?id=" + this.props.id, {
-            method: 'DELETE',
-        })
-          .then(data => data.json())
-          .then()
+        fetch(constantClass.localhost + "/post/deletePost?id=" + this.props.id)
+          .then(data => data.json)
+        
 
       }
     } 

@@ -84,7 +84,6 @@ class Post extends Component {
     localStorage.setItem("post",JSON.stringify(post))
   }
   deletePost = (e) => {
-    e.stopPropagation()
     var deleteIcon = document.getElementById(this.props.userId)
     var deleteButton = document.getElementById(`${this.props.userId}btn`)
     deleteIcon.onclick = () => {
@@ -92,17 +91,8 @@ class Post extends Component {
       deleteButton.classList.toggle("active")
     }
     deleteButton.onclick = () => {
-      const currentUserId = JSON.parse(localStorage.getItem("users")).uid
-      if (currentUserId === this.props.userId) {
-        //delete Post
-        fetch(constantClass.localhost + "/post/deletePost?id=" + this.props.id, {
-            method: 'DELETE',
-        })
-          .then(data => data.json())
-          .then()
-
-      }
-    } 
+       console.log("delete")
+     } 
   
   }
   
