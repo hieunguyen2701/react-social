@@ -110,7 +110,7 @@ class Post extends Component {
 
       }
       else {
-        toast.error('This Post Dont Belong To You !!', {
+        toast.error('This !', {
           id : notification
         })
       }

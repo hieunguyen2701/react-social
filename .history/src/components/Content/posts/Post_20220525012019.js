@@ -101,16 +101,14 @@ class Post extends Component {
           .then(data => data.json())
           .then(
             toast.success("Delete Success", {
-              id : notification
+              
             })
-        )
-          .then(
-          window.location.reload()
-        )
+            
+          )
 
       }
       else {
-        toast.error('This Post Dont Belong To You !!', {
+        toast.error('Whoops something went wrong !', {
           id : notification
         })
       }

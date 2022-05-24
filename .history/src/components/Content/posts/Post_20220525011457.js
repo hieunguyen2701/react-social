@@ -10,7 +10,7 @@ import BookmarkIcon from "@material-ui/icons/Bookmark";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import { Redirect , Link} from 'react-router-dom';
 import * as constantClass from "../../Constant/Constant"
-import toast from 'react-hot-toast'
+
 class Post extends Component {
   // eslint-disable-next-line no-useless-constructor
   constructor(props) {
@@ -85,13 +85,13 @@ class Post extends Component {
   }
   deletePost = (e) => {
     e.stopPropagation()
-    var deleteIcon = document.getElementById(this.props.id)
-    var deleteButton = document.getElementById(`${this.props.id}btn`)
+    var deleteIcon = document.getElementById(this.props.)
+    var deleteButton = document.getElementById(`${this.props.userId}btn`)
     deleteIcon.onclick = () => {
+      console.log(deleteButton)
       deleteButton.classList.toggle("active")
     }
     deleteButton.onclick = () => {
-      const notification = toast.loading("Deleting Post....")
       const currentUserId = JSON.parse(localStorage.getItem("users")).uid
       if (currentUserId === this.props.userId) {
         //delete Post
@@ -99,20 +99,8 @@ class Post extends Component {
             method: 'DELETE',
         })
           .then(data => data.json())
-          .then(
-            toast.success("Delete Success", {
-              id : notification
-            })
-        )
-          .then(
-          window.location.reload()
-        )
+          .then()
 
-      }
-      else {
-        toast.error('This Post Dont Belong To You !!', {
-          id : notification
-        })
       }
     } 
   
@@ -144,8 +132,8 @@ class Post extends Component {
                   {this.props.text && <span className="description">{this.props.text}</span>}
                   {this.props.image_src && <img src={this.props.image_src} />}
                   <div className='post-delete'>
-                    <span className="post-delete-btn" id={this.props.id}  onClick={this.deletePost}>&times;</span>
-                    <div className='post-delete-confirm ' id={`${this.props.id}btn`}>Delete this post?</div>
+                    <span className="post-delete-btn" id={this.props.userId}  onClick={this.deletePost}>&times;</span>
+                    <div className='post-delete-confirm ' id={`${this.props.userId}btn`}>Delete this post?</div>
                   </div>
                 </div>
                   <div className="post-footer">

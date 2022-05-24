@@ -10,7 +10,7 @@ import BookmarkIcon from "@material-ui/icons/Bookmark";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import { Redirect , Link} from 'react-router-dom';
 import * as constantClass from "../../Constant/Constant"
-import toast from 'react-hot-toast'
+
 class Post extends Component {
   // eslint-disable-next-line no-useless-constructor
   constructor(props) {
@@ -91,7 +91,7 @@ class Post extends Component {
       deleteButton.classList.toggle("active")
     }
     deleteButton.onclick = () => {
-      const notification = toast.loading("Deleting Post....")
+      const notification = toast.loading("")
       const currentUserId = JSON.parse(localStorage.getItem("users")).uid
       if (currentUserId === this.props.userId) {
         //delete Post
@@ -100,19 +100,9 @@ class Post extends Component {
         })
           .then(data => data.json())
           .then(
-            toast.success("Delete Success", {
-              id : notification
-            })
-        )
-          .then(
-          window.location.reload()
-        )
+            window.location.reload()
+          )
 
-      }
-      else {
-        toast.error('This Post Dont Belong To You !!', {
-          id : notification
-        })
       }
     } 
   

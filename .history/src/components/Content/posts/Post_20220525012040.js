@@ -105,12 +105,12 @@ class Post extends Component {
             })
         )
           .then(
-          window.location.reload()
+          win
         )
 
       }
       else {
-        toast.error('This Post Dont Belong To You !!', {
+        toast.error('Whoops something went wrong !', {
           id : notification
         })
       }
