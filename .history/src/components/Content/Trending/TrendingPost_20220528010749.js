@@ -33,7 +33,6 @@ class TrendingPost extends Component {
                 return (
                     <TrendingToday
                         key={item.id}
-                        id={item.id}
                         image_src={item.image_src}
                         title={item.title}
                         text={item.text}

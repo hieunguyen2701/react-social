@@ -28,7 +28,7 @@ class CommentList extends Component {
                             key={item.id}
                             username={item.username}
                             text = {item.text}
-                        /> : <span>.....</span>
+                        /> : <span></span>
                     ))
                 }
             </div>

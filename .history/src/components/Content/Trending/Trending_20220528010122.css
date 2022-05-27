@@ -2,9 +2,7 @@
     font-size: 15px;
     font-weight: 600;
 }
-.trending-today-item:hover {
-    cursor:pointer
-}
+
 .trending-today-section .items {
     margin-top: 15px;
     display: flex;

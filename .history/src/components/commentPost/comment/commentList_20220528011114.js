@@ -23,12 +23,10 @@ class CommentList extends Component {
             <div>
                 {
                     commentList.map((item, index) => (
-                        index < 10 ?
-                        <Comment
-                            key={item.id}
+                        index < 10 ? <Comment
                             username={item.username}
                             text = {item.text}
-                        /> : <span>.....</span>
+                        /> : <span></span>
                     ))
                 }
             </div>

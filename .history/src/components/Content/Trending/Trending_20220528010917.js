@@ -25,10 +25,8 @@ class TrendingToday extends Component {
     const url = "https://avatars.dicebear.com/api/open-peeps/"
     const dot = ".svg"
     return ( 
-      <div className="trending-item hoverable trending-today-item"
-        onClick={this.trendingClick}
+      <div className="trending-item hoverable"
         style={{ backgroundImage: `linear-gradient(to top, rgba(0, 0, 0, 0.7) 35%, transparent), url(${this.props.image_src || url + this.props.community + dot})` }}>
-        {this.renderRedirect()}
         <div className="context">
           <span className="title">{this.props.title}</span>
           <br />

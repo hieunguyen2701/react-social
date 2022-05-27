@@ -33,7 +33,7 @@ class Community extends Component {
       if (index < 4) {
           return (
             <CommunityPost
-              key={item.id}
+            key={item.id}
               index={index}
               name={item.title}
               />
