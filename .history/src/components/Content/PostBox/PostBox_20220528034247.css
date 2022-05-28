@@ -1,0 +1,10 @@
+.post-box-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.post-box-avatar{
+    height: 2.5rem;
+    width: 2.5rem;
+    
+}

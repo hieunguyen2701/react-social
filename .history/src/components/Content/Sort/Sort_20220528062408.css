@@ -1,0 +1,12 @@
+.text-blue{
+    color : blue
+}
+.color-red {
+    color : red
+}
+.vote:hover {
+    cursor : pointer
+}
+.time:hover {
+    cursor:pointer
+}

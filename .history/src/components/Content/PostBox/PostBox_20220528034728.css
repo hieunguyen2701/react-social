@@ -1,0 +1,21 @@
+.postbox{
+    position: sticky;
+    z-index: 50;
+    border-color: gray;
+    background-color: white;
+}
+
+.post-box-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.post-box-avatar{
+    height: 2.5rem;
+    width: 2.5rem;
+    overflow: hidden;
+    position: relative;
+    border-radius: 99999px;
+    border-color: gray;
+    background-color: white;
+}
