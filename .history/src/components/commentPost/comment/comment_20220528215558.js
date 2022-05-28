@@ -4,6 +4,7 @@ import ThumbUpIcon from "@material-ui/icons/ThumbUp"
 import ShareIcon from "@material-ui/icons/Share";
 import TimeAgo from 'timeago-react';
 function Comment(props) {
+    const time = "2022-05-27T19:25:20.971Z"
     return (
         <div className="post-comment">
             <div className="post-comment-container">
@@ -13,7 +14,7 @@ function Comment(props) {
                 <div>
                     <h5 className="comment-post-username">
                         {props.username}
-                        <TimeAgo datetime={props.created_at} />
+                        <TimeAgo datetime={this.props.created_at} />
                     </h5>
                     <span>{ props.text}</span>
                 </div>

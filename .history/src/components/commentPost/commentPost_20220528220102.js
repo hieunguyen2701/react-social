@@ -46,8 +46,8 @@ class CommentPost extends Component {
                     title={this.state.post.title}
                     text={this.state.post.text}
                     image_src={this.state.post.image_src}
-                    comments={this.state.post.comments}
-                    created_at={this.state.post.created_at}
+                                comments={this.state.post.comments}
+                                created_at={this.state.post.created_at}
                 />
             </div>
             <SideBar />

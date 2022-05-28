@@ -152,8 +152,7 @@ class SumbitPostTest extends Component {
           id : notification
         });
         if (localStorage.getItem("downloadURL") !== null) {
-          localStorage.removeItem("downloadURL");
-          console.log("remove download url")
+          
         }
       })
       .catch((error) => {

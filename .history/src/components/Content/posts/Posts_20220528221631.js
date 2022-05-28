@@ -33,6 +33,7 @@ class Posts extends Component {
                         dataIsLoad : true
                     })
                 })
+                console.log("sort by time")
         // }
     }
     

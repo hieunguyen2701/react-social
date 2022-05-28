@@ -151,9 +151,8 @@ class SumbitPostTest extends Component {
         toast.success('Post upload successfull', {
           id : notification
         });
-        if (localStorage.getItem("downloadURL") !== null) {
-          localStorage.removeItem("downloadURL");
-          console.log("remove download url")
+        if (localStorage.getItem("downloadURL") === null) {
+          
         }
       })
       .catch((error) => {

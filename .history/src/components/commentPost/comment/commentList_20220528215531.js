@@ -28,7 +28,7 @@ class CommentList extends Component {
                             key={item.id}
                             username={item.username}
                             text = {item.text}
-                            created_at={item.created_at}
+                            created_at=
                         /> : <span>.....</span>
                     ))
                 }

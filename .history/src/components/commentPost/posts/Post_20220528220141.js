@@ -35,7 +35,7 @@ class Post extends Component {
           "comments": comments,
           "community": this.props.community,
           "username": localStorage.getItem("username"),
-          "created_at": this.props.created_at,
+          "creat"
       }
       const requestOption = {
           method: "PUT",

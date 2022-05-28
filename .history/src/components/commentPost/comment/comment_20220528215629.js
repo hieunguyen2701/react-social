@@ -13,7 +13,7 @@ function Comment(props) {
                 <div>
                     <h5 className="comment-post-username">
                         {props.username}
-                        <TimeAgo datetime={props.created_at} />
+                        <TimeAgo datetime={this.props.created_at} />
                     </h5>
                     <span>{ props.text}</span>
                 </div>

@@ -11,6 +11,7 @@ class Posts extends Component {
         }
     }
     componentDidMount() {
+        console.log(localStorage.getItem("afadca"))
        
             //sort by vote  
             // fetch(constantClass.localhost+"/post/getAll")
@@ -33,6 +34,7 @@ class Posts extends Component {
                         dataIsLoad : true
                     })
                 })
+                console.log("sort by time")
         // }
     }
     

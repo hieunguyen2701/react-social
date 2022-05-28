@@ -153,7 +153,7 @@ class SumbitPostTest extends Component {
         });
         if (localStorage.getItem("downloadURL") !== null) {
           localStorage.removeItem("downloadURL");
-          console.log("remove download url")
+          console.log("")
         }
       })
       .catch((error) => {
