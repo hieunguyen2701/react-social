@@ -10,7 +10,8 @@ import BookmarkIcon from "@material-ui/icons/Bookmark";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import { Redirect , Link} from 'react-router-dom';
 import * as constantClass from "../../Constant/Constant"
-
+import CommentList from "../comment/commentList"
+import toast from 'react-hot-toast'
 
 class Post extends Component {
   // eslint-disable-next-line no-useless-constructor
@@ -26,7 +27,7 @@ class Post extends Component {
   updatePost = (upvote,comments) => {
         let payload = {
           "id": this.props.id,
-          "idUser" : this.props.userId,
+          "idUser" : JSON.parse(localStorage.getItem("users")).uid,
           "title": this.props.title,
           "text": this.props.text,
           "image_src": this.props.image_src,
@@ -76,6 +77,7 @@ class Post extends Component {
     }
  
     console.log("upvote is " + this.props.upvotes)
+    console.log(new Date())
   }
   onClick = () => {
     var id = this.props.id
@@ -86,7 +88,9 @@ class Post extends Component {
     localStorage.setItem("post",JSON.stringify(post))
   }
   submitComments = (event) => {
-    if (event.key == "Enter") {
+   
+    if (event.key === "Enter") {
+      const notification = toast.loading('Wait a second ....')
       let comment = event.currentTarget.value
       if (comment != null || comment != undefined) {
         let payload = {
@@ -95,7 +99,7 @@ class Post extends Component {
           "post": this.props.id,
           "username": localStorage.getItem("username"),
           "text": comment,
-          created_at: new Date()
+          "created_at": new Date()
         }
         const requestOptions ={
           method: "POST",
@@ -106,10 +110,18 @@ class Post extends Component {
                   .then(response => response.json())
                   .then(data => {
                       // this.getComments();
-                      this.updatePost(this.props.upvotes,this.props.comments+1)
+                    toast.success('Success', {
+                        id : notification
+                        });
+                    this.updatePost(this.props.upvotes, this.props.comments + 1)
+                    var input = document.getElementById("post-commentID")
+                    input.value = ''
+                    window.location.reload();
                   })
                   .catch(error =>{
-                      
+                    toast.error('Whoops something went wrong !', {
+                      id : notification
+                    })
                   })
       }
     }
@@ -130,7 +142,13 @@ class Post extends Component {
       
                 <div className="post-title">
                 <img src={`https://avatars.dicebear.com/api/open-peeps/${this.props.username}.svg`} />    
-                  <span className="subreddit-name">r/{this.props.community}</span>
+            <Link to={{
+              pathname: "/communityPost",
+              state: {
+                message: "hello "
+              }
+            }}
+              className="subreddit-name">r/{this.props.community}</Link>
                   <span className="post-user">Posted by</span>
                   <span className="post-user underline">u/{this.props.username}</span>
                   <div className="spacer"></div>
@@ -143,15 +161,10 @@ class Post extends Component {
                 </div>
                 <div className="post-footer">
             
-                <Link to={{
-              pathname: "/commentPost",
-              state: {
-                message: "hello "
-              }
-            }}  className="comments footer-action">                    
-                    <ModeCommentIcon className="comment-icon" />
-                    <span>{this.props.comments} Comments</span>
-                  </Link>  
+                  <div className="comments footer-action">                    
+                  <ModeCommentIcon className="comment-icon" />
+                  <span>{this.props.comments} Comments</span>
+                  </div>  
                   
                   <div className="share footer-action">
                     <ShareIcon />
@@ -164,14 +177,18 @@ class Post extends Component {
                   </div>
                   <MoreHorizIcon className="more-icon footer-action" />
                 </div>
-                {/* <div className="post-comment">
-                  <span>Comments as Tran duc</span>
-                  <input placeholder="what are you thoughts?" text="text"  onKeyPress={this.submitComments} />
-                </div> */}
+                <div className="post-comment" >
+                  <span>Comments as {localStorage.getItem("username")}</span>
+                  <div className="comment-input">
+                    <img className='post-comment-image' src={`https://avatars.dicebear.com/api/open-peeps/${localStorage.getItem("username")}.svg`} />   
+                    <input className="post-comment-input" placeholder="what are you thoughts?" text="text"  onKeyPress={this.submitComments} id="post-commentID"/>
+                  </div>
+                  {/* <button >Comment</button> */}
+                </div>
         </div>
-        {/* <div className="post-comment-list">
+        <div className="post-comment-list">
           <CommentList idPost={this.props.id} />
-        </div> */}
+        </div>
       </div>
      );
   }

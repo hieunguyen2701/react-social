@@ -8,8 +8,11 @@ function App() {
     <div className="App">
       {/* <WelcomePage/> */}
       {
-        (localStorage.getItem("users") === undefined || localStorage.getItem("users") == null) ? <WelcomePage /> : <MainPage />
-      
+        (localStorage.getItem("users") === undefined || localStorage.getItem("users") == null) ? <WelcomePage /> :
+          <div>
+            <NavBar
+            <MainPage />
+          </div>
       }
     </div>
   );

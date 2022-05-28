@@ -26,15 +26,14 @@ class Post extends Component {
   updatePost = (upvote,comments) => {
         let payload = {
           "id": this.props.id,
-          "idUser" : this.props.userId,
+          "idUser" : this.props.idUser,
           "title": this.props.title,
           "text": this.props.text,
           "image_src": this.props.image_src,
           "upvotes": upvote,
           "comments": comments,
           "community": this.props.community,
-          "username": this.props.username,
-          "created_at": this.props.created_at,
+          "username" : localStorage.getItem("username")
       }
       const requestOption = {
           method: "PUT",

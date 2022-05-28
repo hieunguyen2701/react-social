@@ -38,8 +38,8 @@ class CommentPost extends Component {
             <div className="bars-wrapper-inside">
             <div className="posts-wrapper" >
                 <Post
-                    id={this.state.post.id}
-                    idUser={this.state.post.idUser}
+                                id={this.state.post.id}
+                                idUser={}
                     upvotes={this.state.post.upvotes}
                     subreddit_image_src={null}
                     community={this.state.post.community}

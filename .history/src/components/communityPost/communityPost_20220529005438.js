@@ -65,7 +65,6 @@ class CommunityPost extends Component {
                         text={item.text}
                         image_src={item.image_src}
                         comments={item.comments}
-                        created_at={item.created_at}
                     />
                     )
             })

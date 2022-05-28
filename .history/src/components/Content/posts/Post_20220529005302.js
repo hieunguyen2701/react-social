@@ -10,8 +10,8 @@ import BookmarkIcon from "@material-ui/icons/Bookmark";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import { Redirect , Link} from 'react-router-dom';
 import * as constantClass from "../../Constant/Constant"
-
-
+import toast from 'react-hot-toast'
+import TimeAgo from 'timeago-react';
 class Post extends Component {
   // eslint-disable-next-line no-useless-constructor
   constructor(props) {
@@ -23,18 +23,17 @@ class Post extends Component {
 
     }
   }
-  updatePost = (upvote,comments) => {
+  updatePost = (upvote) => {
         let payload = {
           "id": this.props.id,
-          "idUser" : this.props.userId,
+          "idUser" : this.props.idUser,
           "title": this.props.title,
           "text": this.props.text,
           "image_src": this.props.image_src,
           "upvotes": upvote,
-          "comments": comments,
+          "comments": this.props.comments,
           "community": this.props.community,
-          "username": this.props.username,
-          "created_at": this.props.created_at,
+          "username" : localStorage.getItem("username")
       }
       const requestOption = {
           method: "PUT",
@@ -53,6 +52,8 @@ class Post extends Component {
   }
   handleClick = () => {
     var post = this.props.id
+    var community = this.props.community
+    localStorage.setItem("community", community)
     localStorage.setItem("post",post)
   }
   upvote = (e) => {
@@ -70,13 +71,13 @@ class Post extends Component {
         upvotesPost: this.props.upvotes,
         color: null,
         isClick: false,
- 
       })
       this.updatePost(this.props.upvotes)
     }
  
     console.log("upvote is " + this.props.upvotes)
   }
+  componentDidMount(){}
   onClick = () => {
     var id = this.props.id
     var post = {
@@ -85,93 +86,102 @@ class Post extends Component {
     }
     localStorage.setItem("post",JSON.stringify(post))
   }
-  submitComments = (event) => {
-    if (event.key == "Enter") {
-      let comment = event.currentTarget.value
-      if (comment != null || comment != undefined) {
-        let payload = {
-          "id": Math.floor(Math.random()*1000000).toString(),
-          "idUser": JSON.parse(localStorage.getItem("users")).uid,
-          "post": this.props.id,
-          "username": localStorage.getItem("username"),
-          "text": comment,
-          created_at: new Date()
-        }
-        const requestOptions ={
-          method: "POST",
-          headers: { 'Content-Type': 'application/json' },
-          body : JSON.stringify(payload),
-      }
-      fetch(constantClass.localhost+"/comment/creat",requestOptions)
-                  .then(response => response.json())
-                  .then(data => {
-                      // this.getComments();
-                      this.updatePost(this.props.upvotes,this.props.comments+1)
-                  })
-                  .catch(error =>{
-                      
-                  })
-      }
+  deletePost = (e) => {
+    e.stopPropagation()
+    var deleteIcon = document.getElementById(this.props.id)
+    var deleteButton = document.getElementById(`${this.props.id}btn`)
+    deleteIcon.onclick = () => {
+      deleteButton.classList.toggle("active")
     }
+    deleteButton.onclick = () => {
+      const notification = toast.loading("Deleting Post....")
+      const currentUserId = JSON.parse(localStorage.getItem("users")).uid
+      if (currentUserId === this.props.userId) {
+        //delete Post
+        fetch(constantClass.localhost + "/post/deletePost?id=" + this.props.id, {
+            method: 'DELETE',
+        })
+          .then(data => data.json())
+          .then(
+            toast.success("Delete Success", {
+              id : notification
+            })
+        )
+          .then(
+          window.location.reload()
+        )
+
+      }
+      else {
+        toast.error('This Post Dont Belong To You !!', {
+          id : notification
+        })
+      }
+    } 
+  
   }
   
   render() { 
+    const date = "Sat May 28 2022 01:32:07 GMT+0700 (Giờ Đông Dương)"
     return ( 
     
       <div className="post-container" onClick={this.handleClick}>  
             
-            <div className="posts">
-                <div className="post-sidebar" >
-                    <ArrowUpwardIcon className="upvote"
-                    style={{ color:this.state.color }} onClick={this.upvote}/>
-                    <span>{this.state.upvotesPost}</span>
-                    <ArrowDownwardIcon className="downvote" />
-                </div>
+            <div className="post">
+              <div className="post-sidebar" >
+              <ArrowUpwardIcon className="upvote"
+                style={{ color:this.state.color }} onClick={this.upvote}/>
+                <span>{this.state.upvotesPost}</span>
+                <ArrowDownwardIcon className="downvote" />
+              </div>
       
                 <div className="post-title">
-                <img src={`https://avatars.dicebear.com/api/open-peeps/${this.props.username}.svg`} />    
-                  <span className="subreddit-name">r/{this.props.community}</span>
+                  <img src={`https://avatars.dicebear.com/api/open-peeps/${this.props.username}.svg`} />           
+                  <Link to={{
+              pathname: "/communityPost",
+              state: {
+                message: "hello "
+              }
+            }}  className="subreddit-name">r/{this.props.community}</Link>
                   <span className="post-user">Posted by</span>
-                  <span className="post-user underline">u/{this.props.username}</span>
+                  <span  className="post-user underline">u/{this.props.username}</span>
+                  <TimeAgo datetime={this.props.created_at} live={false} />
                   <div className="spacer"></div>
                 </div>
                 <div className="post-body">
                     <span className="title">{this.props.title}</span>
-                    {/* {post.video_src && <Video src={post.video_src} duration={post.duration} />} */}
-                    {this.props.text && <span className="description">{this.props.text}</span>}
-                    {this.props.image_src && <img src={this.props.image_src} />}
+                  {/* {post.video_src && <Video src={post.video_src} duration={post.duration} />} */}
+                  {this.props.text && <span className="description">{this.props.text}</span>}
+                  {this.props.image_src && <img src={this.props.image_src} />}
+                  <div className='post-delete'>
+                    <span className="post-delete-btn" id={this.props.id}  onClick={this.deletePost}>&times;</span>
+                    <div className='post-delete-confirm ' id={`${this.props.id}btn`}>Delete this post?</div>
+                  </div>
                 </div>
-                <div className="post-footer">
-            
-                <Link to={{
+                  <div className="post-footer">
+            <Link to={{
               pathname: "/commentPost",
               state: {
                 message: "hello "
               }
-            }}  className="comments footer-action">                    
+            }} 
+            
+                      className="comments footer-action">                    
                     <ModeCommentIcon className="comment-icon" />
                     <span>{this.props.comments} Comments</span>
-                  </Link>  
+                  </Link>
                   
                   <div className="share footer-action">
                     <ShareIcon />
                     <span>Share</span>
                   </div>
-            
                   <div className="save footer-action">
                     <BookmarkIcon />
                     <span>Save</span>
                   </div>
                   <MoreHorizIcon className="more-icon footer-action" />
-                </div>
-                {/* <div className="post-comment">
-                  <span>Comments as Tran duc</span>
-                  <input placeholder="what are you thoughts?" text="text"  onKeyPress={this.submitComments} />
-                </div> */}
-        </div>
-        {/* <div className="post-comment-list">
-          <CommentList idPost={this.props.id} />
-        </div> */}
+              </div>
+          </div>
       </div>
      );
   }
